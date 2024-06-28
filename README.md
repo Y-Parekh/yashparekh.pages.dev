@@ -22,7 +22,7 @@
 		
 	</script>
 	
-	<h1><strong><u>Yash Parekh</strong></u></h1>
+	<h1><strong><u>Yash Parekh</u></strong></h1>
 	<img src = "Home.png">
 </body>
 </html>
