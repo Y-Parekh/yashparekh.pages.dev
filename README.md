@@ -23,6 +23,6 @@
 	</script>
 	
 	<h1><strong><u>Yash Parekh</strong></u></h1>
-	<img src = "Home.jpg">
+	<img src = "Home.png">
 </body>
 </html>
