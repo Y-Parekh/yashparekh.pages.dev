@@ -10,9 +10,6 @@
 	p {font-size: 15pt;
 		color: White;
 		font family: Kristen ITC;}
-	img{
-		border-radius: 50%;
-		}
 </style>
 	
 </head>
