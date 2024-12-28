@@ -132,9 +132,9 @@ function togglebackground(){
   var currentSrc = img.src.split('/').pop();
   var nav = document.getElementById('desktop-nav');
   if (currentSrc === "LightMode.png") {
-      img.src = "./assets/DarkMode.png";
+      img.src = "DarkMode.png";
   } else {
-      img.src = "./assets/LightMode.png";
+      img.src = "LightMode.png";
   }
 }
 
