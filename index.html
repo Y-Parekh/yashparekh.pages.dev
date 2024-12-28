@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="yash.ico">
+    <title>Yash Parekh</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+  </head>
+
+  <body>
+    <noscript>JavaScript needs to be enabled. </noscript>
+    <div class="cursor"></div>  
+    <svg class="trail" viewBox="0 0 1 1"> 
+      <path/>
+    </svg>
+    <!-- Normal Nav-->
+    <nav id="desktop-nav">
+      <div class="logo"><a href="#">Yash Parekh</a></div>
+      <div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><img src="assets/settings.png" class = "settings-pic" onclick="toggleMenu()" id="settingsPic"></li>
+      </div>
+        </ul>
+            
+      <div class="sub-menu-wrap" id="subMenu">
+        <div class="sub-menu">
+            <div class="settings">
+              <h2>Settings</h2>
+            </div>
+            <hr>
+            <a class="sub-menu-link" onclick="toggleMouse()">
+              <img id="mouse_icon" src="./assets/mouse.png" alt="Mouse Toggle" class="icon" />
+              <p>Toggle Mouse</p>
+            </a>
+            <a class="sub-menu-link" onclick="toggleMouseTrail()">
+              <img id="mouse_trail_icon"src="./assets/mouse_trail.png" alt="Mouse Trail Toggle" class="icon"/>
+              <p>Toggle Mouse Trail</p>
+            </a>
+            <a class="sub-menu-link" onclick="togglebackground()">
+              <img id="background" src="./assets/DarkMode.png" alt="Light/Dark Toggle" class="icon"/>
+              <p id="light-toggle-text">View in Light Mode</p>
+              <p id="dark-toggle-text">View in Dark Mode</p>
+            </a>
+          </div>
+        </div>
+
+        
+    </nav>
+
+    <nav id="hamburger-nav">
+      <div class="logo"><a href="#">Yash Parekh</a></div>
+        <label class="hamburger-menu">
+          <input type="checkbox" />
+        </label>
+        <div class="sidebar">
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+    </nav>
+
+    <section id="profile" class="section not-in-view">
+      <div class="section__pic-container">
+        <img src="./assets/profile-pic.png" alt="Yash Parekh profile picture" class= "about-profilepic" onclick="location.href='./assets/profile-pic.png'"/>
+      </div>
+      <div class="section__text">
+        <p class="section__text__p1">Hello, I'm</p>
+        <h1 class="title">Yash Parekh</h1>
+        <p class="section__text__p2">Student</p>
+        <div class="btn-container">
+          <button class="btn btn-color-1" onclick="location.href='#contact'">
+            Contact Info
+          </button>
+        </div>
+        <div id="socials-container">
+          <img
+            src="./assets/linkedin.png"
+            alt="My LinkedIn profile"
+            class="icon"
+            onclick="location.href='https://linkedin.com/'"
+          />
+          <img
+            src="./assets/github.png"
+            alt="My Github profile"
+            class="icon"
+            onclick="location.href='https://github.com/y-parekh'"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section not-in-view">
+      <br><br><br><br><br>
+      <p class="section__text__p1 slide-in">Get To Know More</p>
+      <h1 class="title">About Me</h1>
+      <div class="section-container">
+        <div class="section__pic-container">
+          <img
+            src="./assets/about-pic.jpg"
+            alt="Profile picture"
+            class="about-pic"
+            onclick="location.href='./assets/about-pic.jpg'"
+          />
+        </div>
+        <div class="about-details-container">
+          <div class="about-containers">
+            <div class="details-container">
+              <img
+                src="./assets/experience.png"
+                alt="Experience icon"
+                class="icon"
+              />
+              <h3>Based</h3>
+              <p>Live in: UK <br> From: India</p>
+            </div>
+            <div class="details-container">
+              <img
+                src="./assets/education.png"
+                alt="Education icon"
+                class="icon"
+              />
+              <h3>Education</h3>
+              <p>Year 10 at <a href="https://saintolaves.net">Saint <br> Olave's Grammar School</a></p>
+            </div>
+          </div>
+          <div class="text-container">
+            <p>Hi, I'm Yash, a student based in the UK. <br> I am fond of music (piano and drums), as well as cricket and F1. </p>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+    
+    <!-- Projects -->    
+    <section id="skills" class="section not-in-view">
+      <p class="section__text__p1">Explore My</p>
+      <h1 class="title">Projects</h1>
+      <div class="skills-details-container">
+        <div class="about-containers">
+          <div class="details-container">
+            <h2 class="skills-sub-title">Skills</h2>
+            <div class="article-container">
+              <article>
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon">
+                <div> <h3>Maths</h3> <p>Experienced</p> </div>
+              </article>
+              <article>
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon">
+                <div> <h3>Physics</h3> <p>Experienced</p> </div>
+              </article>
+              <article>
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon">
+                <div> <h3>Computing</h3> <p>Experienced</p> </div>
+              </article>
+              <article>
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon">
+                <div> <h3>Piano</h3> <p>Grade 8</p> </div>
+              </article>
+              <article>
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon">
+                <div> <h3>Drums</h3> <p>Grade 6</p> </div>
+              </article>
+              <article>
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon">
+                <div> <h3><a href="https://www.lamda.ac.uk/">LAMDA</a></h3> <p>Grade 5</p> </div>
+              </article>
+            </div>
+          </div>
+          <div class="details-container">
+            <h2 class="skills-sub-title">Other</h2>
+            <div class="article-container">
+              <article>
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon">
+                <div> <h3>Cricket</h3> <p>Experienced <br> <a href="https://www.play-cricket.com/website/player_stats_widget/batting_stats/6288535">Stats here.</a></p> </div>
+              </article>
+              <article>
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon">
+                <div><h3><a href="https://www.f1inschools.co.uk/">F1 in schools</a></h3> <p><a href="https://teamblitz.uk">Team Leader of Blitz</a></p></div>
+              </article>
+              <article>
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon">
+                <div><h3><a href="https://qualifications.pearson.com/en/qualifications/edexcel-project-qualification/level-1-and-level-2.html">Project 1 Qualification</a></h3> <p>Distinction (A*)</p></div>
+              </article>
+              <article>
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon">
+                <div><h3><a href="https://ukmt.org.uk/">UKMT Maths Challenges</a></h3> <p>Gold+</p></div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section not-in-view">
+      <br><br><br><br><br>
+      <p class="section__text__p1">Get in Touch</p>
+      <h1 class="title">Contact Me</h1>
+
+      <div class="contact-form">
+        <form autocomplete="off" action="mailto:yashparekh410@gmail.com" method="post" enctype="text/plain">
+          <h2 class="contact-form-title">Contact Form</h2>
+          <p>Feel free to message me on this form, or you can email me at: <a href="mailto:yashparekh410@gmail.com">yashparekh410@gmail.com</a>. &#128522 </p>
+          <div class="input-container">
+            <input type="text" name="name" class="input" />
+            <label for="">Name</label>
+            <span>Name</span>
+          </div>
+          <div class="input-container">
+            <input type="email" name="email" class="input" />
+            <label for="">Email</label>
+            <span>Email</span>
+          </div>
+          <div class="input-container textarea">
+            <textarea name="message" class="input"></textarea>
+            <label for="">Message</label>
+            <span>Message</span>
+          </div>
+          <input type="submit" value="Send" class="button"/>
+        </form>
+      </div>
+
+      <div class="contact-info-upper-container">
+        <div class="contact-info-container">
+          <br>
+          <h2>Connect with me:</h2><br><hr><br>
+          <ul>
+            <li><a href="mailto:yashparekh410@gmail.com"><img src="./assets/email.png" alt="Email Logo" class="sm_icon"></a></li>
+            <li><a href="https://www.youtube.com/results?search_query=hello+I+do+not+have+a+youtube+channel"><img src="./assets/youtube.png" alt="YouTube Logo" class="sm_icon"></a></li>
+            <li><a href="https://www.x.com"><img src="./assets/Twitter.png" alt="X (Twitter) Logo" class="sm_icon"></a></li>
+            <li><a href="https://www.whatsapp.com"><img src="./assets/whatsapp.png" alt="WhatsApp Logo" class="sm_icon"></a></li>
+            <li><a href="https://www.instagram.com"><img src="./assets/instagram.png" alt="Instagram Logo" class="sm_icon"></a></li>
+            <li><a href="https://www.facebook.com"><img src="./assets/facebook.png" alt="Facebook Logo" class="sm_icon"></a></li>
+            <li><a href="https://www.linkedin.com"><img src="./assets/linkedin_2.png" alt="LinkedIn Logo" class="sm_icon"></a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </section>
+    <section class="testimonial-section1">
+      <p class="section__text__p1">What people say</p>
+      <h1>Testimonials</h1>
+      <div class="container">
+          <div class="indicator">
+              <span class="button-1 active"></span>
+              <span class="button-1"></span>
+              <span class="button-1"></span>
+              <span class="button-1"></span>
+          </div>
+          <div class="testimonial">
+              <div class="slide-row" id="slide">
+                  <div class="slide-col">
+                      <div class="user-text"> 
+                        <p>
+                          "Yash is hardworking and talented, always striving to excel in everything he takes on. As a collegue, he is supportive, kind, and knows how to bring a smile to anyone’s face."
+                        </p>
+                        <h3>Elon Musk</h3>
+                        <p>CEO of Tesla</p>
+                      </div>
+                      <div class="user-img">
+                          <img src="/assets/elon-pic.png">
+                      </div>
+                  </div>
+                  <div class="slide-col">
+                      <div class="user-text">
+                          <p>
+                            "Yash is a creative and dedicated individual who excels in everything he does. He is a supportive friend with a great sense of humor, always inspiring those around him."
+                          </p>
+                          <h3><a href="https://www.pamoda.pages.dev/">Pamoda Dulneth Waragoda Vitharana</a></h3>
+                          <p>CEO of Sri Lanka</p>
+                      </div>
+                      <div class="user-img">
+                          <img src="/assets/pam-pic.jpeg">
+                      </div>
+                  </div>
+                  <div class="slide-col">
+                      <div class="user-text">
+                        <p>
+                          "Yash is a talented and focused individual who stands out in all he does. He is a dependable friend, always bringing positivity and laughter to those around him."
+                        </p>
+                          <h3>Debaditya Chatterjee</h3>
+                          <p>Cool Guy</p>
+                      </div>
+                      <div class="user-img">
+                          <img src="/assets/deb-pic.jpeg">
+                      </div>
+                  </div>
+                  <div class="slide-col">
+                      <div class="user-text">
+                          <p>"Yash is a dedicated and skilled professional who consistently delivers exceptional results."<br><br>(Rated 10/10)</p>
+                          <h3>John Smith</h3>
+                          <p>Client</p>
+                      </div>
+                      <div class="user-img">
+                          <img src="/assets/john-pic.jpg">
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </section>
+
+    <section class="testimonial-section2">
+      <div class="header">
+        <p class="section__text__p1">What people say</p>
+        <h1 class="title">Testimonials</h1>
+      </div>
+      <div class="testimonials__grid">
+        <div class="card">
+          <span><i class="ri-double-quotes-l"></i></span>
+          <p>
+            "Yash is hardworking and talented, always striving to excel in everything he takes on. As a brother, he’s supportive, kind, and knows how to bring a smile to anyone’s face."
+          </p>
+          <hr />
+          <img src="assets/shaan-pic.jpeg" alt="user" />
+          <p class="name">Shaan Parekh - CEO of Apple</p>
+        </div>
+        <div class="card">
+          <span><i class="ri-double-quotes-l"></i></span>
+          <p>
+            "Yash is a creative and dedicated individual who excels in everything he does. He’s a supportive friend with a great sense of humor, always inspiring those around him."
+          </p>
+          <hr />
+          <img src="assets/pam-pic.jpeg" alt="user" />
+          <p class="name"><a href="https://pamoda.pages.dev" target="_blank">Pamoda DW Vithrana</a> - <a href="https://en.wikipedia.org/wiki/Ravana" target="_blank">CEO of Sri Lanka</a></p>
+        </div>
+        <div class="card">
+          <span><i class="ri-double-quotes-l"></i></span>
+          <p>
+            "Yash is a talented and focused individual who stands out in all he does. He’s a dependable friend, always bringing positivity and laughter to those around him."
+          </p>
+          <hr />
+          <img src="assets/deb-pic.jpeg" alt="user" />
+          <p class="name">Debaditya Chatterjee - Cool guy</p>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer class="section">
+      <p>Copyright &#169; 2023-2025 <a href="https://github.com/y-parekh">Yash Parekh</a>. All Rights Reserved.<br>
+        Credits: <a href="https://github.com/kuturud">Ashvik Dubey</a> - <a href="https://ashvikdubey.com/yashsite">Click Here.</a><br>
+        <a href="https://y-parekh.github.io">Miss the old website?</a><br></p>
+
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
