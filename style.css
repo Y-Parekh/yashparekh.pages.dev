@@ -483,12 +483,12 @@ section {
 /* PROFILE SECTION */
 
 #profile {
-  top:7rem;
+  top:130px;
   position:relative;
   width: 100%;
   gap: 5rem;
   height: 10%;
-  padding-bottom:10%;
+  padding-bottom:7%;
   margin:0 0;
   background-color: var(--color-profile-dark);
   transition: background-color 0.5s ease;
@@ -569,9 +569,11 @@ section {
 /* ABOUT SECTION */
 
 #about {
+  top:2.5em;
   position: relative;
   width:100%;
-  padding: 7% 0 17% 0;
+  padding: 0 25px;
+  padding-bottom:10em;
   background-color: var(--color-about-dark);
   transition: background-color 0.5s ease;
   clip-path: polygon(0% 10%, 100% 0%, 100% 95%, 0% 100%);
@@ -644,13 +646,14 @@ section {
 
 #skills {
   position:relative ;
-  bottom: 11em;
+  top:-6em;
   width:100%;
   height: fit-content;
-  padding: 10% 10% 15% 10%;
+  padding:5em 20px;
+  padding-bottom: 10em;
   background-color: var(--color-skills-dark);
   transition: background-color 0.5s ease;
-  clip-path: polygon(0% 0%, 100% 5%, 100% 100%, 0% 95%);
+  clip-path: polygon(0% 0%, 100% 5%, 100% 100%, 0% 97%);
   text-align: center;
   display:grid;
   justify-content: center;
@@ -695,13 +698,13 @@ article {
 
 #contact {
   position:relative;
-  top:-22em;
+  top:-14em;
   width:100%;
   height:fit-content;
-  padding:5% 10px 10% 0 ;
+  padding:0 10px;
   background-color: var(--color-contact-dark);
   transition: background-color 0.5s ease;
-  clip-path: polygon(0% 5%, 100% 0%, 100% 95%, 0% 100%);
+  clip-path: polygon(0% 5%, 100% 10%, 100% 100%, 0% 100%);
   text-align: center;
   justify-content: center;
   z-index: 1005;
@@ -1088,15 +1091,14 @@ textarea.input {
 
 footer {
   position: relative;
-  bottom:0;  
+  bottom:15em;
   width:100%;
-  height:auto;
-  align-items:flex-start;
+  height: fit-content;
+  padding:0;
   text-align: center;
   justify-content: center;
   z-index: 1006;
 }
-
 
 footer p {
   padding-top:1rem;
@@ -1110,4 +1112,3 @@ footer p {
 footer a{
   color: white;
 }
-
