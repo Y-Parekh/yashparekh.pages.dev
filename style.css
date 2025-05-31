@@ -119,32 +119,73 @@ body.light-mode .sidebar{
 
 /* Cursor */
 .cursor {
-  width:20px;
-  height:20px;
-  background-color:#fcba03;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  position:fixed;
+  position: fixed;
+  pointer-events: none;
   z-index: 9999;
-  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s ease;
 }
 
-.cursor::after {
+.cursor-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 50%;
+  background-color: hsl(var(--hue), 100%, 50%);
+  background-size: 600% 600%;
+  animation: gradientShift 8s ease infinite;
+}
+
+.cursor-inner::after {
   content: "";
-  width:20px;
-  height:20px;
-  position:absolute;
-  border: 8px solid #fcba03;
-  border-radius:50%;
-  opacity: .5;
+  position: absolute;
   top: -8px;
-  left:-8px;
-  pointer-events: none;
+  left: -8px;
+  width: 20px;
+  height: 20px;
+  padding: 8px;
+  border-radius: 50%;
+  background: inherit; /* inherits the same rainbow gradient */
+  opacity: 0.5;
+  z-index: -1;
 }
 
+/*Expand when click animation*/
+.cursor.expand {
+  transform: translate(-50%, -50%) scale(3);
+  transition: transform 0.5s ease;
+}
+
+/*Hover colours over link, buttons, inputs and images*/
+.cursor-inner.hover-link {
+  background: #1e09ff;
+  animation: none;
+}
+
+.cursor-inner.hover-button {
+  background: #9c27b0;
+  animation: none;
+}
+
+.cursor-inner.hover-input {
+  background: #e91e63;
+  animation: none;
+}
+
+.cursor-inner.hover-image {
+  background: #444444 ;
+  animation: none ;
+}
+
+/*Hides custom cursor when mouse is toggled*/
 .hide-cursor .cursor{
   display: none;
 }
 
+/*Mouse Trail*/
 svg.trail{
   position:fixed;
   top:0;
@@ -155,57 +196,83 @@ svg.trail{
 
 svg.trail path{
   fill:none;
-  stroke: #fcba03;
+  stroke: url(#cursor-gradient);
   stroke-width: 5px;
   stroke-linecap: round;
-  stroke-linejoin:round;
+  stroke-linejoin: round;
 }
 
+/*Hides trail over images*/
 .hide-trail svg.trail {
   display: none;
 }
 
+/*Hides trail when mouse trail toggled*/
 .hiden-trail svg.trail {
   display: none;
 }
 
-.expand {
-  animation: cursorAnim1 .5s forwards;
-}
-
+/*Hides custom mouse and trail when screen is touchscreen*/
 .touchscreen #mouse_trail_icon, .touchscreen #mouse_icon, .touchscreen .cursor, .touchscreen svg {
   display: none;
 }
 
-
+/*Animates an expand and shrink over an image*/
+.cursor.hover {
+  animation: cursorAnim1 0.5s forwards;
+}
 @keyframes cursorAnim1 {
   0% {
     transform: scale(1);
-  }
-  50% {
-    transform: scale(3);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-.cursor.hover {
-  opacity:0.5;
-  animation: cursorAnim2 0.5s forwards;
-}
-.cursor.hover::after {
-  opacity:0; 
-}
-
-@keyframes cursorAnim2 {
-  0% {
-    transform: scale(1);
+    opacity: 1
   }
   100% {
     transform: scale(5);
+    opacity: 0.5
   }
 }
+
+.cursor-inner.hover::after {
+  animation: cursorafterAnim1 1s forwards; 
+}
+@keyframes cursorafterAnim1 {
+  0% {
+    opacity: 1;
+
+  }
+  100%{
+    opacity:0;
+    transform: scale(1.5)
+  }
+}
+
+.cursor-inner.unhover{
+  animation: cursorAnim2 0.5s forwards
+}
+@keyframes cursorAnim2 {
+  0% {
+    transform: scale(5);
+    opacity: 0.5
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1
+  }
+}
+
+.cursor-inner.unhover::after {
+  animation: cursorafterAnim2 1s forwards; 
+}
+@keyframes cursorafterAnim2 {
+  0% {
+    opacity: 0;
+    transform: scale(1.5)
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
 
 /* Fade in */
 @media (prefers-reduced-motion: no-preference) {
@@ -222,7 +289,7 @@ svg.trail path{
 @keyframes fade {
   0% {
     opacity: 0;
-    transform: translate(0, 3rem);
+    transform: translate(0, 10rem);
   }
   100% {
     opacity: 1;
@@ -544,6 +611,7 @@ section {
   display: flex;
   justify-content: center;
   gap: 1rem;
+  padding: 1rem;
   
 }
 
@@ -565,6 +633,24 @@ section {
 .btn-color-1:hover {
   background: #2859b4;
 }
+
+.magnetic {
+  display: inline-block;
+  transition: transform 0.3s ease-out;
+  will-change: transform;
+}
+.magnet-button {
+  font-size: 16px;
+  padding: 12px 24px;
+  border-radius: 6px;
+  border: 2px solid #007bff;
+  background-color: white;
+  color: #007bff;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 
 /* ABOUT SECTION */
 

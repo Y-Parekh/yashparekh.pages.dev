@@ -11,17 +11,58 @@ function detectTouchDevice() {
 window.addEventListener('load', detectTouchDevice);
 
 /* Custom Cursor */
+//Actually functioning cursor
 const cursor = document.querySelector('.cursor');
-document.addEventListener('mousemove', e=> {
-  cursor.setAttribute('style', `top: ${e.clientY-10}px; left: ${e.clientX-10}px`);
-})
-
-document.addEventListener("click", () =>{
+document.addEventListener('mousemove', e => {
+  cursor.style.top = `${e.clientY}px`;
+  cursor.style.left = `${e.clientX}px`;
+});
+//Animates the expand when mouse clicked
+document.addEventListener("click", () => {
   cursor.classList.add("expand");
-  setTimeout(()=>{
+  setTimeout(() => {
     cursor.classList.remove("expand");
-  }, 500)
-})
+  }, 500);
+});
+
+//Hovers different colours over different ojects
+const cursorInner = document.querySelector('.cursor-inner');
+const hoverTargets = [
+  { selector: 'a', className: 'hover-link' },
+  { selector: 'button', className: 'hover-button' },
+  { selector: 'img', className: 'hover-image' },
+  { selector: 'input, textarea, select, label', className: 'hover-input' }
+];
+hoverTargets.forEach(({ selector, className }) => {
+  document.querySelectorAll(selector).forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.classList.add('hover');
+      cursorInner.classList.add(className);
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.classList.remove('hover');
+      cursorInner.classList.remove(className);
+    });
+  });
+});
+
+//Controls colour of the mouse and trail
+let hue = 0;
+setInterval(() => {
+  hue = (hue + 1) % 360;
+  document.documentElement.style.setProperty('--hue', hue);
+}, 20);
+
+const trailPath = document.querySelector('.trail path');
+
+function updateTrailColor() {
+  const startColor = `hsl(${hue}, 100%, 50%)`;
+  const startStop = document.querySelector('#gradient-start');
+  if (startStop) {
+    startStop.setAttribute('stop-color', startColor);
+  }
+}
+setInterval(updateTrailColor, 20);
 
 
 
@@ -104,6 +145,23 @@ window.addEventListener("resize", resize)
 resize()
 anim()
 
+/*gradient colour */
+let lastX = 0;
+let lastY = 0;
+const gradient = document.querySelector('#cursor-gradient');
+
+document.addEventListener('mousemove', (e) => {
+  const dx = e.clientX - lastX;
+  const dy = e.clientY - lastY;
+  lastX = e.clientX;
+  lastY = e.clientY;
+
+  let angle = Math.atan2(dy, dx) * (180 / Math.PI);
+  angle = (angle + 360) % 360;
+  angle = (angle + 180) % 360; 
+
+  gradient.setAttribute('gradientTransform', `rotate(${angle}, 0.5, 0.5)`);
+});
 
 /* Toggles custom mouse and auto */
 function toggleMouse() {
@@ -142,7 +200,7 @@ function togglebackground(){
 function togglelight(){
   document.body.classList.remove("darkmode");
   document.body.classList.add("lightmode");
-  const button = document.getElementbyId("dark_mode_icon");
+  const button = document.getElementById("dark_mode_icon");
   button.style.display = "none"
   var item = document.getElementById(itemId);
   button.parentNode.removeChild(button);
@@ -156,23 +214,37 @@ function toggledark(){
 }
 
 
-/* Gets rid of mouse trail if on an image/link/button */
-function removeMouseTrail(){
+/* Gets rid of mouse trail if on an image/link/button/label/input/textarea/span */
+
+function removeMouseTrail() {
+  const cursorInner = document.querySelector('.cursor-inner');
   document.body.classList.remove('hide-trail');
-  var interactiveElements = document.querySelectorAll('a, button, img, label, input, textarea, span');
+  const interactiveElements = document.querySelectorAll('a, button, img, label, input, textarea, span');
+
   interactiveElements.forEach(element => {
     element.addEventListener('mouseover', () => {
       cursor.classList.add('hover');
+      cursorInner.classList.add('hover');
+      cursorInner.classList.remove('unhover'); // just in case
       overInteractive = true;
       document.body.classList.add('hide-trail');
     });
+  
     element.addEventListener('mouseout', () => {
       cursor.classList.remove('hover');
+      cursorInner.classList.remove('hover');
+      cursorInner.classList.add('unhover');
       overInteractive = false;
       document.body.classList.remove('hide-trail');
+
+      // optional: clean up unhover after animation
+      setTimeout(() => {
+        cursorInner.classList.remove('unhover');
+      }, 1000); // should match animation duration
     });
   });
 }
+
 
 removeMouseTrail()
 
@@ -213,30 +285,54 @@ var l_arrow = document.getElementsByClassName("left")
 
 button1[0].onclick=function(){
     slide.style.transform="translateX(0px)";
-    for(i=0;i<4;i++){
+    for(let i=0; i<4; i++){
         button1[i].classList.remove("active");
     }
     this.classList.add("active");
 }
 button1[1].onclick=function(){
     slide.style.transform="translateX(-800px)";
-    for(i=0;i<4;i++){
+    for(let i=0; i<4; i++){
         button1[i].classList.remove("active");
     }
     this.classList.add("active");
 }
 button1[2].onclick=function(){
     slide.style.transform="translateX(-1600px)";
-    for(i=0;i<4;i++){
+    for(let i=0; i<4; i++){
         button1[i].classList.remove("active");
     }
     this.classList.add("active");
 }
 button1[3].onclick=function(){
     slide.style.transform="translateX(-2400px)";
-    for(i=0;i<4;i++){
+    for(let i=0; i<4; i++){
         button1[i].classList.remove("active");
     }
     this.classList.add("active");
 }
 
+
+/*Magnetic Button*/
+const magnets = document.querySelectorAll('.magnetic');
+const strength = 40; // how far it moves (px)
+
+magnets.forEach(magnet => {
+  magnet.addEventListener('mousemove', (e) => {
+    const rect = magnet.getBoundingClientRect();
+    const offsetX = e.clientX - rect.left;
+    const offsetY = e.clientY - rect.top;
+
+    // Calculate percentage offset from center (-0.5 to +0.5)
+    const moveX = ((offsetX / rect.width) - 0.5) * 2 * strength;
+    const moveY = ((offsetY / rect.height) - 0.5) * 2 * strength;
+
+    // Apply transform
+    magnet.style.transform = `translate(${moveX}px, ${moveY}px)`;
+  });
+
+  magnet.addEventListener('mouseleave', () => {
+    // Smoothly return to original position
+    magnet.style.transform = `translate(0, 0)`;
+  });
+});

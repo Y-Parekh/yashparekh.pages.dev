@@ -12,9 +12,15 @@
 
   <body>
     <noscript>JavaScript needs to be enabled. </noscript>
-    <div class="cursor"></div>  
+    <div class="cursor"><div class="cursor-inner"></div></div> 
     <svg class="trail" viewBox="0 0 1 1"> 
-      <path/>
+      <path stroke="url(#cursor-gradient)" />
+      <defs>
+        <linearGradient id="cursor-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop id="gradient-start" offset="0%" stop-color="hsl(0, 100%, 50%)" />
+          <stop offset="100%" stop-color="orange" />
+        </linearGradient>
+      </defs>
     </svg>
     <!-- Normal Nav-->
     <nav id="desktop-nav">
@@ -61,7 +67,7 @@
         <div class="sidebar">
           <ul>
             <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Skills</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
@@ -75,8 +81,8 @@
         <p class="section__text__p1">Hello, I'm</p>
         <h1 class="title">Yash Parekh</h1>
         <p class="section__text__p2">Student</p>
-        <div class="btn-container">
-          <button class="btn btn-color-1" onclick="location.href='#contact'">
+        <div class="btn-container magnetic">
+          <button class="btn btn-color-1 magnetic-btn" onclick="location.href='#contact'">
             Contact Info
           </button>
         </div>
@@ -225,8 +231,13 @@
             <textarea name="message" class="input"></textarea>
             <label for="">Message</label>
             <span>Message</span>
+          </div><!--
+          <input type="submit" value="Send" class="button"/>-->
+          <div class="btn-container magnetic">
+            <button class="btn btn-color-1 magnetic-btn">
+              Send
+            </button>
           </div>
-          <input type="submit" value="Send" class="button"/>
         </form>
       </div>
 
@@ -263,10 +274,10 @@
                   <div class="slide-col">
                       <div class="user-text"> 
                         <p>
-                          "Yash is hardworking and talented, always striving to excel in everything he takes on. As a collegue, he is supportive, kind, and knows how to bring a smile to anyone’s face."
+                          "As my advisor and teacher, Yash is very knowledgeable and talented, always striving to excel in everything he takes on. He is supportive, kind, and knows how to bring a smile to anyone’s face."
                         </p>
                         <h3>Elon Musk</h3>
-                        <p>CEO of Tesla</p>
+                        <p><a href="https://www.tesla.com">Co-CEO of Tesla</a></p>
                       </div>
                       <div class="user-img">
                           <img src="elon-pic.png">
@@ -281,7 +292,7 @@
                           <p>CEO of Sri Lanka</p>
                       </div>
                       <div class="user-img">
-                          <img src="pam-pic.jpeg">
+                          <img src="pam-pic.jpeg" width="300px">
                       </div>
                   </div>
                   <div class="slide-col">
@@ -293,7 +304,7 @@
                           <p>Cool Guy</p>
                       </div>
                       <div class="user-img">
-                          <img src="deb-pic.jpeg">
+                          <img src="deb-pic.jpg" width="320px">
                       </div>
                   </div>
                   <div class="slide-col">
@@ -320,11 +331,11 @@
         <div class="card">
           <span><i class="ri-double-quotes-l"></i></span>
           <p>
-            "Yash is hardworking and talented, always striving to excel in everything he takes on. As a collegue, he is supportive, kind, and knows how to bring a smile to anyone’s face."
+            "As my advisor and teacher, Yash is very knowledgeable and talented, always striving to excel in everything he takes on. He is supportive, kind, and knows how to bring a smile to anyone’s face."
           </p>
           <hr />
           <img src="elon-pic.png" alt="user" />
-          <p class="name">Elon Musk - CEO of Tesla</p>
+          <p class="name">Elon Musk - Co-CEO of Tesla</p>
         </div>
         <div class="card">
           <span><i class="ri-double-quotes-l"></i></span>
