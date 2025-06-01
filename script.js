@@ -197,22 +197,6 @@ function togglebackground(){
 }
 
 
-function togglelight(){
-  document.body.classList.remove("darkmode");
-  document.body.classList.add("lightmode");
-  const button = document.getElementById("dark_mode_icon");
-  button.style.display = "none"
-  var item = document.getElementById(itemId);
-  button.parentNode.removeChild(button);
-
-}
-
-
-function toggledark(){
-  document.body.classList.remove("lightmode");
-  document.body.classList.add("darkmode");
-}
-
 
 /* Gets rid of mouse trail if on an image/link/button/label/input/textarea/span */
 
@@ -248,15 +232,24 @@ function removeMouseTrail() {
 
 removeMouseTrail()
 
+//Toggles Settings menu and rotates picture
+
 let subMenu = document.getElementById("subMenu");
 let settingsPic = document.getElementById("settingsPic")
 
-    function toggleMenu(){
-        subMenu.classList.toggle("open-menu");
-        settingsPic.classList.toggle("rotated");
-    }
+function toggleMenu(){
+  subMenu.classList.toggle("open-menu");
+  settingsPic.classList.toggle("rotated");
+}
 
-    const inputs = document.querySelectorAll(".input");
+document.addEventListener("click", function(event) {
+  if (!subMenu.contains(event.target) && !settingsPic.contains(event.target)) {
+    subMenu.classList.remove("open-menu");
+    settingsPic.classList.remove("rotated");
+  }
+});
+
+const inputs = document.querySelectorAll(".input");
 
 function focusFunc() {
   let parent = this.parentNode;
@@ -336,3 +329,23 @@ magnets.forEach(magnet => {
     magnet.style.transform = `translate(0, 0)`;
   });
 });
+
+//Custom Right Click Menu
+const menu = document.getElementById('custom-menu');
+
+document.addEventListener('contextmenu', (e) => {
+  e.preventDefault(); // prevent default right-click menu
+  menu.style.top = `${e.clientY}px`;
+  menu.style.left = `${e.clientX}px`;
+  menu.style.display = 'block';
+});
+
+document.addEventListener('click', () => {
+  menu.style.display = 'none'; // hide on normal click
+});
+
+function copyURL() {
+  navigator.clipboard.writeText(window.location.href)
+    .then(() => alert('📋 URL copied to clipboard!'))
+    .catch(err => alert('❌ Failed to copy URL: ' + err));
+}
